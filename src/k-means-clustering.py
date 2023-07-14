@@ -11,12 +11,7 @@ Note: Performance depends on centroid placement and choice of K.
 """
 
 import numpy as np
-
-
-def compute_euclidean_distance(p1, p2):
-    # euclidean distance/sum of square error
-    d = np.square(np.sum((p1 - p2) ** 2))
-    return d
+import utils as ut
 
 
 class KMeans:
@@ -68,7 +63,7 @@ class KMeans:
         # determine best centroid based on euclidean distance
         dists = []
         for i in range(self.n_clusters):
-            dists.append(compute_euclidean_distance(point, self.cluster_centroids[i]))
+            dists.append(ut.compute_euclidean_distance(point, self.cluster_centroids[i]))
 
         centroid_selection = np.argmin(dists)
         return centroid_selection
