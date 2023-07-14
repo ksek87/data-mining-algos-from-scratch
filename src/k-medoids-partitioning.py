@@ -1,4 +1,4 @@
-'''
+"""
 K-Medoids Partitioning Algorithm
 
 The K-Medoids Partitioning algorithm, a clustering technique that partitions data into
@@ -10,7 +10,10 @@ K-Medoids Partitioning is useful when dealing with outliers or when the concept 
 It offers robustness to noise and enhanced interpretability.
 However, it can be computationally expensive due to pairwise dissimilarity calculations.
 
-'''
+A further improvement to the algorithm is the PAM (Partitioning Around Medoids) Algorithm
+The PAM algorithm provides a solution to  efficient medoid selection in clustering.
+It iteratively updates medoids by minimizing the total distance of swapping them with non-medoid data points.
+"""
 
 import numpy as np
 import utils as ut
