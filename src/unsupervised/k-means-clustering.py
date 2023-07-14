@@ -11,7 +11,7 @@ Note: Performance depends on centroid placement and choice of K.
 """
 
 import numpy as np
-import utils as ut
+import utils.utils as ut
 
 
 class KMeans:

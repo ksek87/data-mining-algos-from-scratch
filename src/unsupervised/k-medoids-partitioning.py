@@ -16,7 +16,7 @@ It iteratively updates medoids by minimizing the total distance of swapping them
 """
 
 import numpy as np
-import utils as ut
+import utils.utils as ut
 
 
 class KMedoids:
