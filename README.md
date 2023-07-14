@@ -13,8 +13,8 @@ This project is in progress;
 - [ ] K-Nearest Neighbors (KNN)
 - [ ] Support Vector Machines (SVM)
 - [ ] Apriori
-- [ ] K-Means
-- [ ] K-Medoids
+- [x] K-Means
+- [x] K-Medoids
 - [ ] PAM
 - [ ] DBSCAN
 - [ ] Principal Component Analysis (PCA)
