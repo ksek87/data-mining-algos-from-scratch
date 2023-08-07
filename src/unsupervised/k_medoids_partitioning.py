@@ -1,22 +1,22 @@
-"""
-K-Medoids Partitioning Algorithm
+""" K-Medoids Partitioning Algorithm
 
 The K-Medoids Partitioning algorithm, a clustering technique that partitions data into
-K distinct clusters. Unlike K-Means, which uses centroids as representatives, K-Medoids selects actual data points (
-medoids) as cluster representatives based on a distance metric. Then each medoid is evaluated for dissimilarity,
-with the objective of minimizing dissimilarity through swapping medoid with non-medoids data points.
+K distinct clusters. Unlike K-Means, which uses centroids as representatives, K-Medoids selects
+actual data points (medoids) as cluster representatives based on a distance metric. Then each
+medoid is evaluated for dissimilarity, with the objective of minimizing dissimilarity through
+swapping medoid with non-medoids data points.
 
-K-Medoids Partitioning is useful when dealing with outliers or when the concept of a centroid is ill-defined.
-It offers robustness to noise and enhanced interpretability.
+K-Medoids Partitioning is useful when dealing with outliers or when the concept of a centroid is
+ill-defined.It offers robustness to noise and enhanced interpretability.
 However, it can be computationally expensive due to pairwise dissimilarity calculations.
 
 A further improvement to the algorithm is the PAM (Partitioning Around Medoids) Algorithm
 The PAM algorithm provides a solution to  efficient medoid selection in clustering.
-It iteratively updates medoids by minimizing the total distance of swapping them with non-medoid data points.
-"""
+It iteratively updates medoids by minimizing the total distance of swapping them
+with non-medoid data points."""
 
 import numpy as np
-import utils.methods as ut
+import src.utils.methods as ut
 
 
 class KMedoids:
@@ -29,8 +29,14 @@ class KMedoids:
         self.assigned_data = np.zeros(self.len_data)
 
     def fit(self, X):
+        """:param X:
+        :type X:
+        :return:
+        :rtype:
+"""
         self.data = X
-        self.assigned_data = np.zeros(self.len_data)  # Track the cluster assignment by index for the data
+        self.assigned_data = np.zeros(self.len_data)  # Track the cluster assignment by index for
+        # the data
 
         # Initialize random medoids
         medoid_indices = np.random.choice(self.len_data, self.n_clusters, replace=False)
@@ -58,6 +64,11 @@ class KMedoids:
         return self.assigned_data, self.medoids
 
     def _compute_best_medoid(self, point):
+        """
+
+        :param point:
+        :return:
+        """
         # Determine the best medoid based on distance
         distances = [ut.compute_distance(point, medoid) for medoid in self.medoids]
         best_medoid_idx = np.argmin(distances)
@@ -69,8 +80,22 @@ class KMedoids:
 
 
 # TODO: Implement PAM algorithm + explain how this improves from k-medoids
+
 class PAM:
+    """
+
+    """
+
     def __init__(self, n_clusters, n_iter, len_data):
+        """
+
+        :param n_clusters: 
+        :type n_clusters: 
+        :param n_iter: 
+        :type n_iter: 
+        :param len_data: 
+        :type len_data: 
+        """
         self.n_clusters = n_clusters
         self.n_iter = n_iter
         self.medoids = []
@@ -79,6 +104,10 @@ class PAM:
         self.assigned_data = np.zeros(self.len_data)
 
     def fit(self, X):
+        """
+
+        :rtype: object
+        """
         self.data = X
         self.assigned_data = np.zeros(self.len_data)
         return self.assigned_data, self.medoids

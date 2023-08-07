@@ -2,7 +2,8 @@
 K-Means Clustering Algorithm
 
 This Python script implements the K-Means Clustering algorithm for unsupervised data clustering.
-It randomly initializes K centroids, assigns each data point to the nearest centroid, and updates centroids iteratively.
+It randomly initializes K centroids, assigns each data point to the nearest centroid, and updates
+centroids iteratively.
 The algorithm aims to minimize the within-cluster sum of squares (euclidean distance error) and
 partitions the data into K distinct clusters.
 It has applications in customer segmentation, image compression, and anomaly detection.
@@ -11,7 +12,7 @@ Note: Performance depends on centroid placement and choice of K.
 """
 
 import numpy as np
-import utils.methods as ut
+import src.utils.methods as ut
 
 
 class KMeans:
@@ -24,8 +25,16 @@ class KMeans:
         self.assigned_data = np.zeros(self.len_data)
 
     def fit(self, X):
+        """
+
+        :param X:
+        :type X:
+        :return:
+        :rtype:
+        """
         self.data = X
-        self.assigned_data = np.zeros(self.len_data)  # track the cluster assignment by index for the data
+        # track the cluster assignment by index for the data
+        self.assigned_data = np.zeros(self.len_data)
 
         # initialize  random centroids
         nums = np.random.choice(self.len_data, self.n_clusters, replace=False)
@@ -43,7 +52,8 @@ class KMeans:
 
             new_cents = []
             for cent in range(len(self.cluster_centroids)):
-                clustered_data = [X[i] for i in range(self.len_data) if self.assigned_data[i] == cent]
+                clustered_data = \
+                    [X[i] for i in range(self.len_data) if self.assigned_data[i] == cent]
                 # re-calculate the cluster centroids
                 centroid = np.mean(clustered_data, axis=0)
                 new_cents.append(centroid)
@@ -60,6 +70,13 @@ class KMeans:
         return self.assigned_data, self.cluster_centroids
 
     def _compute_best_centroid(self, point):
+        """
+
+        :param point:
+        :type point:
+        :return:
+        :rtype:
+        """
         # determine best centroid based on euclidean distance
         dists = []
         for i in range(self.n_clusters):
@@ -69,5 +86,12 @@ class KMeans:
         return centroid_selection
 
     def predict(self, data):
+        """
+
+        :param data:
+        :type data:
+        :return:
+        :rtype:
+        """
         pred = self._compute_best_centroid(data)
         return pred
